@@ -26,10 +26,8 @@ public class GameController {
     }
 
     @PutMapping("/games")
-    public Game updateEmployee(@RequestBody Game game){
+    public Game updateGame(@RequestBody Game game){
         gameService.saveGame(game);
         return game;
     }
-
-
 }

@@ -18,27 +18,28 @@ public class GameObject {
     @Column(name = "text")
     private String text;
 
+    @Column(name = "is_approved")
+    private boolean isApproved;
+
     @Column(name = "created_at")
     private Date createdAt;
 
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="game_id", nullable=false)
-    private Game game;
+    @Column(name = "game_id")
+    private int game_id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private User user;
+    @Column(name = "user_id")
+    private int user_id;
 
     public GameObject() {}
 
-    public GameObject(String title, String text, Game game, User user) {
+    public GameObject(String title, String text, int game, int user) {
         this.title = title;
         this.text = text;
-        this.game = game;
-        this.user = user;
+        this.game_id = game;
+        this.user_id = user;
         this.createdAt = new Date(System.currentTimeMillis());
     }
 
@@ -66,6 +67,14 @@ public class GameObject {
         this.text = text;
     }
 
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -82,20 +91,20 @@ public class GameObject {
         this.updatedAt = updatedAt;
     }
 
-    public Game getGame() {
-        return game;
+    public int getGame_id() {
+        return game_id;
     }
 
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGame_id(int game_id) {
+        this.game_id = game_id;
     }
 
-    public User getUser() {
-        return user;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     @Override
@@ -104,10 +113,11 @@ public class GameObject {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
+                ", isApproved=" + isApproved +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
-                ", game=" + game +
-                ", user=" + user +
+                ", game_id=" + game_id +
+                ", user_id=" + user_id +
                 '}';
     }
 }
