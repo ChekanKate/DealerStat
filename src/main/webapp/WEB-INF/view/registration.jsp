@@ -19,12 +19,6 @@
     <br><br>
     Password <form:input path="password"/>
     <form:errors path="password"/>
-    <br><br>
-    Select your role :
-    <br>
-    I'm a trader <form:radiobutton path="role" value="trader"/>
-    <br>
-    I'm an appraiser <form:radiobutton path="role" value="anonym"/>
     <br><br><br>
     <input type="submit" value="OK">
 </form:form>

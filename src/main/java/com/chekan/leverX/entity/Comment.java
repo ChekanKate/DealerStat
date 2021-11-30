@@ -24,22 +24,20 @@ public class Comment {
     @Column(name = "approved")
     private boolean approved;
 
-    @ManyToOne
-    @JoinColumn(name="post_id", nullable=false)
-    private GameObject post;
+    @Column(name = "post_id")
+    private int postId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="author_id", nullable=false)
-    private User author;
+    @Column(name = "author_id")
+    private int authorId;
 
     public Comment() {}
 
-    public Comment(String message, int rate, GameObject post, User author) {
+    public Comment(String message, int rate, boolean approved, int postId, int authorId) {
         this.message = message;
         this.rate = rate;
-        this.post = post;
-        this.author = author;
-        this.createdAt = new Date(System.currentTimeMillis());
+        this.approved = approved;
+        this.postId = postId;
+        this.authorId = authorId;
     }
 
     public int getId() {
@@ -82,20 +80,20 @@ public class Comment {
         this.approved = approved;
     }
 
-    public GameObject getPost() {
-        return post;
+    public int getPostId() {
+        return postId;
     }
 
-    public void setPost(GameObject post) {
-        this.post = post;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
-    public User getAuthor() {
-        return author;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     @Override
@@ -106,8 +104,8 @@ public class Comment {
                 ", rate=" + rate +
                 ", createdAt=" + createdAt +
                 ", approved=" + approved +
-                ", post=" + post +
-                ", author=" + author +
+                ", postId=" + postId +
+                ", authorId=" + authorId +
                 '}';
     }
 }

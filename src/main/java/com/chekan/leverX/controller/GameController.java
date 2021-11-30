@@ -25,8 +25,9 @@ public class GameController {
         return game;
     }
 
-    @PutMapping("/games")
-    public Game updateGame(@RequestBody Game game){
+    @PutMapping("/games/{id}")
+    public Game updateGame(@RequestBody Game game, @PathVariable int id){
+        game.setId(id);
         gameService.saveGame(game);
         return game;
     }

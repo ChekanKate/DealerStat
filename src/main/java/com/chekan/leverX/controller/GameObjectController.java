@@ -17,7 +17,6 @@ public class GameObjectController {
     @PostMapping("/object")
     public GameObject addNewGameObject(@RequestBody GameObject gameObject) {
         gameObject.setCreatedAt(new Date(System.currentTimeMillis()));
-        gameObject.setUpdatedAt(new Date(System.currentTimeMillis()));
         gameObject.setApproved(false);
         gameObjectService.saveGameObject(gameObject);
         return gameObject;
@@ -34,15 +33,17 @@ public class GameObjectController {
     public String deleteGameObject(@PathVariable int id){
         GameObject gameObject = gameObjectService.getGameObject(id);
         if(gameObject == null){
-            return "There is no employee with ID = " + id + " in Database";
+            return "There is no game object with ID = " + id + " in Database";
         }else {
             gameObjectService.deleteGameObject(id);
-            return "Employee with ID = " + id + " was deleted.";
+            return "Game object with ID = " + id + " was deleted.";
         }
     }
 
-    @PutMapping("/object")
-    public GameObject updateGameObject(@RequestBody GameObject gameObject){
+    @PutMapping("/object/{id}")
+    public GameObject updateGameObject(@RequestBody GameObject gameObject, @PathVariable int id){
+        gameObject.setId(id);
+        gameObject.setUpdatedAt(new Date(System.currentTimeMillis()));
         gameObjectService.saveGameObject(gameObject);
         return gameObject;
     }

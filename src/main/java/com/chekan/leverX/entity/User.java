@@ -3,8 +3,8 @@ package com.chekan.leverX.entity;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
@@ -24,7 +24,7 @@ public class User {
     private String lastName;
 
     @Column(name = "password", nullable = false)
-    @Size(min = 7, max = 50, message = "Password length must be between 7 and 25 characters")
+    @Size(min = 7, max = 255, message = "Password length must be between 7 and 25 characters")
     private String password;
 
     @Column(name = "email", nullable = false, length = 30)
@@ -82,14 +82,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-//    public String getConfirmPassword() {
-//        return confirmPassword;
-//    }
-//
-//    public void setConfirmPassword(String confirmPassword) {
-//        this.confirmPassword = confirmPassword;
-//    }
 
     public String getEmail() {
         return email;
