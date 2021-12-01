@@ -27,17 +27,13 @@ public class Comment {
     @Column(name = "post_id")
     private int postId;
 
-    @Column(name = "author_id")
-    private int authorId;
-
     public Comment() {}
 
-    public Comment(String message, int rate, boolean approved, int postId, int authorId) {
+    public Comment(String message, int rate, boolean approved, int postId) {
         this.message = message;
         this.rate = rate;
         this.approved = approved;
         this.postId = postId;
-        this.authorId = authorId;
     }
 
     public int getId() {
@@ -88,14 +84,6 @@ public class Comment {
         this.postId = postId;
     }
 
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
-
     @Override
     public String toString() {
         return "Comment{" +
@@ -105,7 +93,6 @@ public class Comment {
                 ", createdAt=" + createdAt +
                 ", approved=" + approved +
                 ", postId=" + postId +
-                ", authorId=" + authorId +
                 '}';
     }
 }

@@ -33,22 +33,16 @@ public class CommentController {
         return commentService.getComment(id);
     }
 
-    @PutMapping("/articles/{id}/comments")
-    public Comment updateComment(@RequestBody Comment comment, @PathVariable int id){
-        comment.setId(id);
-        commentService.saveComment(comment);
-        return comment;
+    @DeleteMapping("/comments/{id}")
+    public String deleteComment(@PathVariable int id){
+        Comment comment = commentService.getComment(id);
+        if(comment == null){
+            return "There is no comment with ID = " + id + " in Database";
+        } else {
+            commentService.deleteComment(id);
+            return "Comment with ID = " + id + " was deleted.";
+        }
     }
 
-//    @PutMapping("/articles/{id}/comment/{rate}")
-//    public String updateComment(@PathVariable int id, @PathVariable int rate){
-//        Comment comment = commentService.getComment(id);
-//        if(comment == null){
-//            return "There is no comment with ID = " + id + " in Database";
-//        }else {
-//            commentService.updateComment(id, rate);
-//            return "Comment with ID = " + id + " was deleted.";
-//        }
-//    }
 
 }

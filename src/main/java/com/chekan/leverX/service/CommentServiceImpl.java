@@ -34,7 +34,8 @@ public class CommentServiceImpl implements CommentService{
 
     @Transactional
     @Override
-    public void updateComment(int id, int rate) {
-        commentDAO.updateComment(id, rate);
+    public void deleteComment(int id) {
+        commentDAO.deleteComment(id);
     }
+
 }

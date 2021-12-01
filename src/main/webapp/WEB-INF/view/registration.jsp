@@ -14,10 +14,10 @@
     Last name <form:input path="lastName"/>
     <form:errors path="lastName"/>
     <br><br>
-    Email <form:input path="email"/>
+    Email <form:input path="email" autocomplete="off"/>
     <form:errors path="email"/>
     <br><br>
-    Password <form:input path="password"/>
+    Password <form:input path="password"  autocomplete="off"/>
     <form:errors path="password"/>
     <br><br><br>
     <input type="submit" value="OK">

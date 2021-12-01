@@ -31,24 +31,25 @@ public class User {
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "Enter the correct email format")
     private String email;
 
+    @Column(name = "activation_code")
+    private String activationCode;
+
     @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     private String role;
 
     public User(){
         this.createdAt = new Date(System.currentTimeMillis());
-        this.role = "trader";
     }
 
-    public User(String firstName, String lastName, String password, String email, String role) {
+    public User(String firstName, String lastName, String password, String email, String activationCode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
-        this.role = role;
-        this.createdAt = new Date(System.currentTimeMillis());
+        this.activationCode = activationCode;
     }
 
     public int getId() {
@@ -105,6 +106,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 
     @Override

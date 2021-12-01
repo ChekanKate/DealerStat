@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -42,11 +41,10 @@ public class CommentDAOImpl implements CommentDAO{
     }
 
     @Override
-    public void updateComment(int id, int rate) {
+    public void deleteComment(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Comment> query = session.createQuery("update Comment set rate=:rate where id=:id", Comment.class);
-        query.setParameter("id", id);
-        query.setParameter("rate", rate);
+        Query<Comment> query = session.createQuery("delete from Comment where id=:commentId");
+        query.setParameter("commentId", id);
         query.executeUpdate();
     }
 

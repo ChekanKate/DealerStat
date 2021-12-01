@@ -14,7 +14,7 @@ public class EmailServiceImpl implements EmailService{
     private MailSender mailSender;
 
     @Override
-    public void sendMail(String toEmail){
+    public String sendMail(String toEmail){
 
         String uuid = UUID.randomUUID().toString();
 
@@ -22,11 +22,12 @@ public class EmailServiceImpl implements EmailService{
 
         message.setTo(toEmail);
         message.setFrom("chekankate@gmail.com");
-        message.setSubject("HI");
-        message.setText(uuid);
+        message.setSubject("DealerStat activation");
+        message.setText("Hello! Your account activation code: " + uuid);
 
         mailSender.send(message);
 
+        return uuid;
     }
 
 }
