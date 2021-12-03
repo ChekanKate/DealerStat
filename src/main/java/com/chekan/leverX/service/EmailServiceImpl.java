@@ -5,8 +5,6 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class EmailServiceImpl implements EmailService{
 
@@ -16,18 +14,19 @@ public class EmailServiceImpl implements EmailService{
     @Override
     public String sendMail(String toEmail){
 
-        String uuid = UUID.randomUUID().toString();
+        Integer x= 1000 + (int)(Math.random() * ((9999 - 1000) + 1));
+        String code = x.toString();
 
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setTo(toEmail);
         message.setFrom("chekankate@gmail.com");
         message.setSubject("DealerStat activation");
-        message.setText("Hello! Your account activation code: " + uuid);
+        message.setText("Hello! Your account activation code: " + code);
 
         mailSender.send(message);
 
-        return uuid;
+        return code;
     }
 
 }

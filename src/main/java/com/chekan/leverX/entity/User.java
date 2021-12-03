@@ -1,9 +1,13 @@
 package com.chekan.leverX.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -37,8 +41,12 @@ public class User {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "role")
-    private String role;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
 
     public User(){
         this.createdAt = new Date(System.currentTimeMillis());
@@ -100,12 +108,12 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public String getRole() {
-        return role;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     public String getActivationCode() {
@@ -125,7 +133,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", createdAt=" + createdAt +
-                ", role=" + role +
                 '}';
     }
 }
