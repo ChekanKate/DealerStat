@@ -32,12 +32,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").anonymous()
-                //.antMatchers("/games").anonymous()
+                .antMatchers("/games").hasRole("TRADER")
                 .and()
                 .formLogin()
                 .and()
-                .logout().logoutSuccessUrl("/");
+                .logout().logoutSuccessUrl("/")
+                .and()
+                .httpBasic();
 
 //        http
 //                .authorizeRequests()
