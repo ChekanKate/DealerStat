@@ -31,21 +31,18 @@ public class UserDAOImpl implements UserDAO{
         return user;
     }
 
-//    @Override
-//    @Transactional
-//    public User getByEmail(String email) {
-//        Session session = sessionFactory.getCurrentSession();
-//        Query<User> query = session.createQuery("from User where email=:username", User.class);
-//        query.setParameter("username", username);
-//        User user = query.getSingleResult();
-//        return user;
-//    }
-
     @Override
     @Transactional
-    public User getByUserEmail(String email) {
+    public User getUserByEmail(String email) {
         Criteria crit = sessionFactory.getCurrentSession().createCriteria(User.class);
-        crit.add(Restrictions.eq("email", email)); //assuming Employee entity has "email" field
+        crit.add(Restrictions.eq("email", email));
+        return (User) crit.list().get(0);
+    }
+
+    @Override
+    public User getUserByActivationCode(String activationCode) {
+        Criteria crit = sessionFactory.getCurrentSession().createCriteria(User.class);
+        crit.add(Restrictions.eq("activationCode", activationCode));
         return (User) crit.list().get(0);
     }
 }

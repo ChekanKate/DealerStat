@@ -1,12 +1,14 @@
 package com.chekan.leverX.controller;
 
-import com.chekan.leverX.entity.Comment;
+import com.chekan.leverX.entity.NewPassword;
+import com.chekan.leverX.entity.Role;
 import com.chekan.leverX.entity.User;
+import com.chekan.leverX.service.EmailService;
+import com.chekan.leverX.service.RoleService;
 import com.chekan.leverX.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ActivationController {
@@ -14,17 +16,21 @@ public class ActivationController {
     @Autowired
     private UserService userService;
 
-//    private UserService2 userService2;
-//
-//    @Autowired
-//    public void setUserService(UserService2 userService2) {
-//        this.userService2 = userService2;
-//    }
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
+    private EmailService emailService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/activate/{id}/{code}")
     public String activateAccount(@PathVariable int id, @PathVariable String code){
         User user = userService.getUser(id);
         if(code.equals(user.getActivationCode())){
+            Role role = roleService.getRoleByName("ROLE_TRADER");
+            user.getRoles().add(role);
             userService.saveUser(user);
             return "Account activation was successful";
         } else {
@@ -32,9 +38,29 @@ public class ActivationController {
         }
     }
 
-//    @GetMapping("/user/{email}")
-//    public User showUser(@PathVariable String email){
-//        return userService.getByUserEmail(email);
-//    }
+    @GetMapping("/auth/forgot_password/{email}")
+    public String forgotPassword(@PathVariable String email){
+        User user = userService.getByUserEmail(email);
+        if(user == null){
+            return "User with this email does not exist.";
+        } else {
+            String code = emailService.sendMail(email);
+            user.setActivationCode(code);
+            userService.saveUser(user);
+            return "Check your email.";
+        }
+    }
+
+    @PostMapping("/auth/reset")
+    public String resetPassword(@RequestBody NewPassword newPassword){
+        User user = userService.getUserByActivationCode(newPassword.getCode());
+        if(user == null){
+            return "Wrong activation code!";
+        } else {
+            user.setPassword(passwordEncoder.encode(newPassword.getPassword()));
+            userService.saveUser(user);
+            return "Password changed successfully.";
+        }
+    }
 
 }

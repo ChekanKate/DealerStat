@@ -16,33 +16,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserSecurityService implements UserDetailsService {
-//
-//    private UserDAO userDAO;
-//
-//    @Autowired
-//    public void setUserRepository(UserDAO userDAO) {
-//        this.userDAO = userDAO;
-//    }
-//
-//    public User findByUsername(String username) {
-//        return userDAO.getByUserEmail(username);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = findByUsername(username);
-//        if(user == null) {
-//            throw new UsernameNotFoundException(String.format("User '%s' not found", username));
-//        }
-//        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
-//                mapRolesToAuthorities(user.getRoles()));
-//    }
-//
-//
-//    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-//        return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
-//    }
 
     private UserDAO userDAO;
 
@@ -55,7 +28,7 @@ public class UserSecurityService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDAO.getByUserEmail(username);
+        User user = userDAO.getUserByEmail(username);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User '%s' not found", username));
         }

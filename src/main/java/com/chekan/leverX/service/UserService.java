@@ -6,4 +6,5 @@ public interface UserService {
     public void saveUser(User user);
     public User getUser(int id);
     public User getByUserEmail(String email);
+    public User getUserByActivationCode(String activationCode);
 }
