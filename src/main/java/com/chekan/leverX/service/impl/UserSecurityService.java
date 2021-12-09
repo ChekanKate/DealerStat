@@ -1,4 +1,4 @@
-package com.chekan.leverX.service;
+package com.chekan.leverX.service.impl;
 
 import com.chekan.leverX.dao.UserDAO;
 import com.chekan.leverX.entity.Role;

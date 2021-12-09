@@ -1,5 +1,6 @@
-package com.chekan.leverX.dao;
+package com.chekan.leverX.dao.impl;
 
+import com.chekan.leverX.dao.GameObjectDAO;
 import com.chekan.leverX.entity.GameObject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class GameObjectDAOImpl implements GameObjectDAO{
+public class GameObjectDAOImpl implements GameObjectDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

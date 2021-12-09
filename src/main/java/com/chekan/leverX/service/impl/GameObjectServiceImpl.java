@@ -1,7 +1,8 @@
-package com.chekan.leverX.service;
+package com.chekan.leverX.service.impl;
 
 import com.chekan.leverX.dao.GameObjectDAO;
 import com.chekan.leverX.entity.GameObject;
+import com.chekan.leverX.service.GameObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class GameObjectServiceImpl implements GameObjectService{
+public class GameObjectServiceImpl implements GameObjectService {
 
     @Autowired
     private GameObjectDAO gameObjectDAO;

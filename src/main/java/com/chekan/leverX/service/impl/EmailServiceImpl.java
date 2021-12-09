@@ -1,12 +1,13 @@
-package com.chekan.leverX.service;
+package com.chekan.leverX.service.impl;
 
+import com.chekan.leverX.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmailServiceImpl implements EmailService{
+public class EmailServiceImpl implements EmailService {
 
     @Autowired
     private MailSender mailSender;

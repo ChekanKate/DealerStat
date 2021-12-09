@@ -1,5 +1,6 @@
-package com.chekan.leverX.dao;
+package com.chekan.leverX.dao.impl;
 
+import com.chekan.leverX.dao.UserDAO;
 import com.chekan.leverX.entity.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
     @Autowired
     SessionFactory sessionFactory;

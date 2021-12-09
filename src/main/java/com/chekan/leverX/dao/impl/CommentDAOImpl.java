@@ -1,5 +1,6 @@
-package com.chekan.leverX.dao;
+package com.chekan.leverX.dao.impl;
 
+import com.chekan.leverX.dao.CommentDAO;
 import com.chekan.leverX.entity.Comment;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CommentDAOImpl implements CommentDAO{
+public class CommentDAOImpl implements CommentDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

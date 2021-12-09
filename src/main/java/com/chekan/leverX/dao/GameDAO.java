@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface GameDAO {
     public List<Game> getAllGames();
+    public Game getGameById(int id);
     public void saveGame(Game game);
 
 }

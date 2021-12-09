@@ -1,5 +1,6 @@
-package com.chekan.leverX.dao;
+package com.chekan.leverX.dao.impl;
 
+import com.chekan.leverX.dao.RoleDAO;
 import com.chekan.leverX.entity.Role;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RoleDAOImpl implements RoleDAO{
+public class RoleDAOImpl implements RoleDAO {
 
     @Autowired
     SessionFactory sessionFactory;

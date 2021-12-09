@@ -1,7 +1,7 @@
 package com.chekan.leverX.configuration;
 
 import com.chekan.leverX.dao.UserDAO;
-import com.chekan.leverX.service.UserSecurityService;
+import com.chekan.leverX.service.impl.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;

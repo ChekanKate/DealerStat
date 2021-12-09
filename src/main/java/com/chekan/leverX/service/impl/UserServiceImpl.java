@@ -1,14 +1,15 @@
-package com.chekan.leverX.service;
+package com.chekan.leverX.service.impl;
 
 import com.chekan.leverX.dao.UserDAO;
 import com.chekan.leverX.entity.User;
+import com.chekan.leverX.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDAO userDAO;

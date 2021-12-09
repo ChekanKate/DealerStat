@@ -1,7 +1,8 @@
-package com.chekan.leverX.service;
+package com.chekan.leverX.service.impl;
 
 import com.chekan.leverX.dao.CommentDAO;
 import com.chekan.leverX.entity.Comment;
+import com.chekan.leverX.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class CommentServiceImpl implements CommentService{
+public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentDAO commentDAO;
