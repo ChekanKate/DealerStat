@@ -40,8 +40,8 @@ public class GameObjectServiceImpl implements GameObjectService{
 
     @Transactional
     @Override
-    public List<GameObject> getAllGameObjectsById(int id) {
-        return gameObjectDAO.getAllGameObjectsById(id);
+    public List<GameObject> getAllGameObjectsByUserId(int id) {
+        return gameObjectDAO.getAllGameObjectsByUserId(id);
     }
 
 

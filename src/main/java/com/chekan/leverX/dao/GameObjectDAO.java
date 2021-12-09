@@ -9,5 +9,5 @@ public interface GameObjectDAO {
     public List<GameObject> getAllGameObjects();
     public void deleteGameObject(int id);
     public GameObject getGameObject(int id);
-    public List<GameObject> getAllGameObjectsById(int id);
+    public List<GameObject> getAllGameObjectsByUserId(int id);
 }

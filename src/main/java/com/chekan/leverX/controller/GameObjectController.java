@@ -72,7 +72,7 @@ public class GameObjectController {
     @GetMapping("/my")
     public List<GameObject> showAllMyGameObjects(Principal principal){
         User user = userService.getByUserEmail(principal.getName());
-        return gameObjectService.getAllGameObjectsById(user.getId());
+        return gameObjectService.getAllGameObjectsByUserId(user.getId());
     }
 
     @PutMapping("/object/approve/{id}")
