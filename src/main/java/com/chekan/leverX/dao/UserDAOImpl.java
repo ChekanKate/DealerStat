@@ -45,4 +45,5 @@ public class UserDAOImpl implements UserDAO{
         crit.add(Restrictions.eq("activationCode", activationCode));
         return (User) crit.list().get(0);
     }
+
 }

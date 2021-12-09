@@ -43,4 +43,11 @@ public class GameObjectDAOImpl implements GameObjectDAO{
         return gameObject;
     }
 
+    @Override
+    public List<GameObject> getAllGameObjectsById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        List<GameObject> allGameObjects = session.createQuery("from GameObject where user_id=:userId", GameObject.class).setParameter("userId", id).getResultList();
+        return allGameObjects;
+    }
+
 }

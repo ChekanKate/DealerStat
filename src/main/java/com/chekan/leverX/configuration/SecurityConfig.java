@@ -33,31 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/games").hasRole("TRADER")
+                //.antMatchers("/object").hasRole("ADMIN")
                 .and()
-                .formLogin()
+                .formLogin().permitAll().and().httpBasic()
                 .and()
-                .logout().logoutSuccessUrl("/")
-                .and()
-                .httpBasic();
-
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/").anonymous()
-//                .antMatchers("/games").hasRole("TRADER")
-//                .and()
-//                .formLogin().permitAll().and().httpBasic()
-//                .and()
-//                .logout().logoutSuccessUrl("/");
-//
-//        http
-//                .csrf().disable();
-
-//        http.csrf().disable()
-//                .httpBasic()
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/").anonymous()
-//                .antMatchers("/games").hasRole("TRADER");
+                .logout().logoutSuccessUrl("/");
 
     }
 

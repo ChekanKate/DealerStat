@@ -5,6 +5,7 @@ import com.chekan.leverX.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,18 @@ public class CommentController {
     }
 
     @GetMapping("/users/{id}/comments")
+    public List<Comment> showApprovedComments(@PathVariable int id){
+        List<Comment> allComments = commentService.getComments(id);
+        List<Comment> approvedComments = new ArrayList<>();
+        for(Comment comment : allComments){
+            if(comment.isApproved() == true){
+                approvedComments.add(comment);
+            }
+        }
+        return approvedComments;
+    }
+
+    @GetMapping("/admin/users/{id}/comments")
     public List<Comment> showComments(@PathVariable int id){
         return commentService.getComments(id);
     }
@@ -44,5 +57,21 @@ public class CommentController {
         }
     }
 
+    @PutMapping("/articles/{id}/comments")
+    public Comment updateComment(@RequestBody Comment comment, @PathVariable int id){
+        Comment comment1 = commentService.getComment(id);
+        comment1.setApproved(false);
+        comment1.setMessage(comment.getMessage());
+        comment1.setRate(comment.getRate());
+        return comment1;
+    }
+
+    @PutMapping("/comment/approve/{id}")
+    public Comment approveComment(@PathVariable int id){
+        Comment comment = commentService.getComment(id);
+        comment.setApproved(true);
+        commentService.saveComment(comment);
+        return comment;
+    }
 
 }
