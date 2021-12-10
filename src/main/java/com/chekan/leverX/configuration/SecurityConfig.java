@@ -4,6 +4,7 @@ import com.chekan.leverX.dao.UserDAO;
 import com.chekan.leverX.service.impl.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,8 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/games").hasRole("TRADER")
-                //.antMatchers("/object").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/games").hasAnyRole("TRADER", "ADMIN")
+                .antMatchers(HttpMethod.PUT, "/games/{id}").hasAnyRole("TRADER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/object").hasRole("TRADER")
+                .antMatchers( "/admin/**").hasRole("ADMIN")
+                .antMatchers( "/object/{id}").hasAnyRole("TRADER", "ADMIN")
+                .antMatchers( "/my").authenticated()
+                .antMatchers( "/object/approve/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/comments/{id}").authenticated()
+                .antMatchers(HttpMethod.PUT, "/articles/{id}/comments").authenticated()
+                .antMatchers(HttpMethod.PUT, "/comment/approve/{id}").hasRole("ADMIN")
                 .and()
                 .formLogin().permitAll().and().httpBasic()
                 .and()
