@@ -26,42 +26,42 @@ public class CommentController {
     }
 
     @GetMapping("/users/{id}/comments")
-    public List<Comment> showApprovedComments(@PathVariable int id){
+    public List<Comment> showApprovedComments(@PathVariable int id) {
         List<Comment> allComments = commentService.getComments(id);
         List<Comment> approvedComments = new ArrayList<>();
-        for(Comment comment : allComments){
-            if(comment.isApproved() == true){
+        for (Comment comment : allComments) {
+            if (comment.isApproved() == true) {
                 approvedComments.add(comment);
             }
         }
-        if(approvedComments.isEmpty()){
+        if (approvedComments.isEmpty()) {
             throw new MyNoSuchElementException("There is no approved comments that belong to the post with id " + id + " in Database");
         }
         return approvedComments;
     }
 
     @GetMapping("/admin/users/{id}/comments")
-    public List<Comment> showComments(@PathVariable int id){
+    public List<Comment> showComments(@PathVariable int id) {
         List<Comment> comments = commentService.getComments(id);
-        if(comments.isEmpty()){
+        if (comments.isEmpty()) {
             throw new MyNoSuchElementException("There is no comments that belong to the post with id " + id + " in Database");
         }
         return comments;
     }
 
     @GetMapping("/users/comments/{id}")
-    public Comment showComment(@PathVariable int id){
+    public Comment showComment(@PathVariable int id) {
         Comment comment = commentService.getComment(id);
-        if (comment == null){
+        if (comment == null) {
             throw new MyNoSuchElementException("There is no comment with ID = " + id + " in Database");
         }
         return comment;
     }
 
     @DeleteMapping("/comments/{id}")
-    public String deleteComment(@PathVariable int id){
+    public String deleteComment(@PathVariable int id) {
         Comment comment = commentService.getComment(id);
-        if(comment == null){
+        if (comment == null) {
             return "There is no comment with ID = " + id + " in Database";
         } else {
             commentService.deleteComment(id);
@@ -70,9 +70,9 @@ public class CommentController {
     }
 
     @PutMapping("/articles/{id}/comments")
-    public Comment updateComment(@RequestBody Comment comment, @PathVariable int id){
+    public Comment updateComment(@RequestBody Comment comment, @PathVariable int id) {
         Comment comment1 = commentService.getComment(id);
-        if (comment1 == null){
+        if (comment1 == null) {
             throw new MyNoSuchElementException("There is no comment with ID = " + id + " in Database");
         }
         comment1.setApproved(false);
@@ -82,9 +82,9 @@ public class CommentController {
     }
 
     @PutMapping("/comment/approve/{id}")
-    public Comment approveComment(@PathVariable int id){
+    public Comment approveComment(@PathVariable int id) {
         Comment comment = commentService.getComment(id);
-        if (comment == null){
+        if (comment == null) {
             throw new MyNoSuchElementException("There is no comment with ID = " + id + " in Database");
         }
         comment.setApproved(true);

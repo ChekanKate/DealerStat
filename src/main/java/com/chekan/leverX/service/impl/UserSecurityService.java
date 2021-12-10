@@ -19,11 +19,9 @@ public class UserSecurityService implements UserDetailsService {
 
     private UserDAO userDAO;
 
-
     public UserSecurityService(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
-
 
     @Override
     @Transactional
@@ -35,7 +33,6 @@ public class UserSecurityService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 mapRolesToAuthorities(user.getRoles()));
     }
-
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());

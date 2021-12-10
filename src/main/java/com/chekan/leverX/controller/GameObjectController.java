@@ -34,8 +34,8 @@ public class GameObjectController {
     public List<GameObject> showApprovedGameObjects() {
         List<GameObject> allGameObjects = gameObjectService.getAllGameObjects();
         List<GameObject> approvedGameObjects = new ArrayList<>();
-        for(GameObject object : allGameObjects){
-            if(object.isApproved() == true){
+        for (GameObject object : allGameObjects) {
+            if (object.isApproved() == true) {
                 approvedGameObjects.add(object);
             }
         }
@@ -49,20 +49,20 @@ public class GameObjectController {
     }
 
     @DeleteMapping("/object/{id}")
-    public String deleteGameObject(@PathVariable int id){
+    public String deleteGameObject(@PathVariable int id) {
         GameObject gameObject = gameObjectService.getGameObject(id);
-        if(gameObject == null){
+        if (gameObject == null) {
             return "There is no game object with ID = " + id + " in Database";
-        }else {
+        } else {
             gameObjectService.deleteGameObject(id);
             return "Game object with ID = " + id + " was deleted.";
         }
     }
 
     @PutMapping("/object/{id}")
-    public GameObject updateGameObject(@RequestBody GameObject gameObject, @PathVariable int id){
+    public GameObject updateGameObject(@RequestBody GameObject gameObject, @PathVariable int id) {
         GameObject gameObject1 = gameObjectService.getGameObject(id);
-        if(gameObject1 == null){
+        if (gameObject1 == null) {
             throw new MyNoSuchElementException("There is no game object with ID = " + id + " in Database");
         }
         gameObject1.setApproved(false);
@@ -74,15 +74,15 @@ public class GameObjectController {
     }
 
     @GetMapping("/my")
-    public List<GameObject> showAllMyGameObjects(Principal principal){
+    public List<GameObject> showAllMyGameObjects(Principal principal) {
         User user = userService.getByUserEmail(principal.getName());
         return gameObjectService.getAllGameObjectsByUserId(user.getId());
     }
 
     @PutMapping("/object/approve/{id}")
-    public GameObject approveGameObject(@PathVariable int id){
+    public GameObject approveGameObject(@PathVariable int id) {
         GameObject gameObject = gameObjectService.getGameObject(id);
-        if(gameObject == null){
+        if (gameObject == null) {
             throw new MyNoSuchElementException("There is no game object with ID = " + id + " in Database");
         }
         gameObject.setApproved(true);

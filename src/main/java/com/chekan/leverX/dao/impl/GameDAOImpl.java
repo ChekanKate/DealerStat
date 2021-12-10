@@ -2,7 +2,6 @@ package com.chekan.leverX.dao.impl;
 
 import com.chekan.leverX.dao.GameDAO;
 import com.chekan.leverX.entity.Game;
-import com.chekan.leverX.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

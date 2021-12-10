@@ -4,8 +4,7 @@ public class IncorrectData {
 
     private String info;
 
-    public IncorrectData() {
-    }
+    public IncorrectData() {}
 
     public String getInfo() {
         return info;

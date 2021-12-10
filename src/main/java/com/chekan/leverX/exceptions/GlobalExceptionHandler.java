@@ -13,7 +13,7 @@ import javax.persistence.NoResultException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleException(MyNoSuchElementException exception){
+    public ResponseEntity<IncorrectData> handleException(MyNoSuchElementException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo(exception.getMessage());
 
@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleException(NumberFormatException exception){
+    public ResponseEntity<IncorrectData> handleException(NumberFormatException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo("Wrong format of data");
 
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleException(HibernateOptimisticLockingFailureException exception){
+    public ResponseEntity<IncorrectData> handleException(HibernateOptimisticLockingFailureException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo("This item does not exist.");
 
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleException(NoResultException exception){
+    public ResponseEntity<IncorrectData> handleException(NoResultException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo("This item does not exist.");
 
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleException(ConstraintViolationException exception){
+    public ResponseEntity<IncorrectData> handleException(ConstraintViolationException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo("This item does not exist.");
 
@@ -53,7 +53,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<IncorrectData> handleException(IndexOutOfBoundsException exception){
+    public ResponseEntity<IncorrectData> handleException(IndexOutOfBoundsException exception) {
         IncorrectData data = new IncorrectData();
         data.setInfo("This item does not exist.");
 

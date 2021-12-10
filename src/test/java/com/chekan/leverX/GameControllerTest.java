@@ -21,7 +21,7 @@ public class GameControllerTest {
     GameController gameController = new GameController();
 
     @Test
-    public void testAddGame(){
+    public void testAddGame() {
         Game game = new Game("Test Game");
         Game result = gameController.addNewGame(game);
         assertEquals(game, result);

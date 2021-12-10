@@ -14,7 +14,8 @@ public class Game {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    public Game(){}
+    public Game() {
+    }
 
     public Game(String name) {
         this.name = name;

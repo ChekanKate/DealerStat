@@ -5,7 +5,11 @@ import com.chekan.leverX.entity.Game;
 import java.util.List;
 
 public interface GameService {
-    public List<Game> getAllGames();
-    public Game getGameById(int id);
-    public void saveGame(Game game);
+
+    List<Game> getAllGames();
+
+    Game getGameById(int id);
+
+    void saveGame(Game game);
+
 }

@@ -48,7 +48,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    public User(){
+    public User() {
         this.createdAt = new Date(System.currentTimeMillis());
     }
 

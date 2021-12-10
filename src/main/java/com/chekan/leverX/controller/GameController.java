@@ -14,7 +14,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping(value = "/games")
-    public List<Game> showAllGames(){
+    public List<Game> showAllGames() {
         List<Game> allGames = gameService.getAllGames();
         return allGames;
     }
@@ -26,7 +26,7 @@ public class GameController {
     }
 
     @PutMapping("/games/{id}")
-    public Game updateGame(@RequestBody Game game, @PathVariable int id){
+    public Game updateGame(@RequestBody Game game, @PathVariable int id) {
         game.setId(id);
         gameService.saveGame(game);
         return game;

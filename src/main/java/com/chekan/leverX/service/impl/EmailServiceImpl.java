@@ -13,9 +13,9 @@ public class EmailServiceImpl implements EmailService {
     private MailSender mailSender;
 
     @Override
-    public String sendMail(String toEmail){
+    public String sendMail(String toEmail) {
 
-        Integer x= 1000 + (int)(Math.random() * ((9999 - 1000) + 1));
+        Integer x = 1000 + (int) (Math.random() * ((9999 - 1000) + 1));
         String code = x.toString();
 
         SimpleMailMessage message = new SimpleMailMessage();

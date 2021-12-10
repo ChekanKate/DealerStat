@@ -5,7 +5,7 @@ import javax.persistence.NoResultException;
 
 public class MyNoSuchElementException extends NoResultException {
 
-    public MyNoSuchElementException(String message){
+    public MyNoSuchElementException(String message) {
         super(message);
     }
 

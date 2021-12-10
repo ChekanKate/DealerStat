@@ -27,7 +27,8 @@ public class Comment {
     @Column(name = "post_id")
     private int postId;
 
-    public Comment() {}
+    public Comment() {
+    }
 
     public Comment(String message, int rate, boolean approved, int postId) {
         this.message = message;

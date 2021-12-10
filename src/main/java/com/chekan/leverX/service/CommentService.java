@@ -5,8 +5,13 @@ import com.chekan.leverX.entity.Comment;
 import java.util.List;
 
 public interface CommentService {
-    public void saveComment(Comment comment);
-    public List<Comment> getComments(int id);
-    public Comment getComment(int id);
-    public void deleteComment(int id);
+
+    void saveComment(Comment comment);
+
+    List<Comment> getComments(int id);
+
+    Comment getComment(int id);
+
+    void deleteComment(int id);
+
 }

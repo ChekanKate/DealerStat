@@ -24,7 +24,7 @@ import java.util.Properties;
 public class Config {
 
     @Bean
-    public ViewResolver viewResolver(){
+    public ViewResolver viewResolver() {
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/WEB-INF/view/");
         internalResourceViewResolver.setSuffix(".jsp");
@@ -32,7 +32,7 @@ public class Config {
     }
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
@@ -46,7 +46,7 @@ public class Config {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactoryBean(){
+    public LocalSessionFactoryBean sessionFactoryBean() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan("com.chekan.leverX.entity");
@@ -60,7 +60,7 @@ public class Config {
     }
 
     @Bean
-    public HibernateTransactionManager transactionManager(){
+    public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactoryBean().getObject());
         return transactionManager;
