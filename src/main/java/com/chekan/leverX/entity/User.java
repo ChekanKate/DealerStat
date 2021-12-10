@@ -31,7 +31,7 @@ public class User {
     @Size(min = 7, max = 255, message = "Password length must be between 7 and 25 characters")
     private String password;
 
-    @Column(name = "email", nullable = false, length = 30)
+    @Column(name = "email", nullable = false, length = 30, unique = true)
     @Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "Enter the correct email format")
     private String email;
 

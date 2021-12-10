@@ -2,6 +2,7 @@ package com.chekan.leverX.controller;
 
 import com.chekan.leverX.entity.GameObject;
 import com.chekan.leverX.entity.User;
+import com.chekan.leverX.exceptions.MyNoSuchElementException;
 import com.chekan.leverX.service.GameObjectService;
 import com.chekan.leverX.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,9 @@ public class GameObjectController {
     @PutMapping("/object/{id}")
     public GameObject updateGameObject(@RequestBody GameObject gameObject, @PathVariable int id){
         GameObject gameObject1 = gameObjectService.getGameObject(id);
+        if(gameObject1 == null){
+            throw new MyNoSuchElementException("There is no game object with ID = " + id + " in Database");
+        }
         gameObject1.setApproved(false);
         gameObject1.setTitle(gameObject.getTitle());
         gameObject1.setText(gameObject.getText());
@@ -78,6 +82,9 @@ public class GameObjectController {
     @PutMapping("/object/approve/{id}")
     public GameObject approveGameObject(@PathVariable int id){
         GameObject gameObject = gameObjectService.getGameObject(id);
+        if(gameObject == null){
+            throw new MyNoSuchElementException("There is no game object with ID = " + id + " in Database");
+        }
         gameObject.setApproved(true);
         gameObjectService.saveGameObject(gameObject);
         return gameObject;

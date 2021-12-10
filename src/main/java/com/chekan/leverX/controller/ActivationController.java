@@ -25,9 +25,9 @@ public class ActivationController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/activate/{id}/{code}")
-    public String activateAccount(@PathVariable int id, @PathVariable String code){
-        User user = userService.getUser(id);
+    @GetMapping("/activate/{email}/{code}")
+    public String activateAccount(@PathVariable String email, @PathVariable String code){
+        User user = userService.getByUserEmail(email);
         if(code.equals(user.getActivationCode())){
             Role role = roleService.getRoleByName("ROLE_TRADER");
             user.getRoles().add(role);

@@ -1,11 +1,7 @@
 package com.chekan.leverX.controller;
 
 import com.chekan.leverX.entity.Comment;
-import com.chekan.leverX.entity.Game;
-import com.chekan.leverX.entity.GameObject;
 import com.chekan.leverX.service.CommentService;
-import com.chekan.leverX.service.GameObjectService;
-import com.chekan.leverX.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

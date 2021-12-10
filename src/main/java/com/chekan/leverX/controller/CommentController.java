@@ -1,6 +1,7 @@
 package com.chekan.leverX.controller;
 
 import com.chekan.leverX.entity.Comment;
+import com.chekan.leverX.exceptions.MyNoSuchElementException;
 import com.chekan.leverX.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,17 +34,28 @@ public class CommentController {
                 approvedComments.add(comment);
             }
         }
+        if(approvedComments.isEmpty()){
+            throw new MyNoSuchElementException("There is no approved comments that belong to the post with id " + id + " in Database");
+        }
         return approvedComments;
     }
 
     @GetMapping("/admin/users/{id}/comments")
     public List<Comment> showComments(@PathVariable int id){
-        return commentService.getComments(id);
+        List<Comment> comments = commentService.getComments(id);
+        if(comments.isEmpty()){
+            throw new MyNoSuchElementException("There is no comments that belong to the post with id " + id + " in Database");
+        }
+        return comments;
     }
 
     @GetMapping("/users/comments/{id}")
     public Comment showComment(@PathVariable int id){
-        return commentService.getComment(id);
+        Comment comment = commentService.getComment(id);
+        if (comment == null){
+            throw new MyNoSuchElementException("There is no comment with ID = " + id + " in Database");
+        }
+        return comment;
     }
 
     @DeleteMapping("/comments/{id}")
@@ -60,6 +72,9 @@ public class CommentController {
     @PutMapping("/articles/{id}/comments")
     public Comment updateComment(@RequestBody Comment comment, @PathVariable int id){
         Comment comment1 = commentService.getComment(id);
+        if (comment1 == null){
+            throw new MyNoSuchElementException("There is no comment with ID = " + id + " in Database");
+        }
         comment1.setApproved(false);
         comment1.setMessage(comment.getMessage());
         comment1.setRate(comment.getRate());
@@ -69,6 +84,9 @@ public class CommentController {
     @PutMapping("/comment/approve/{id}")
     public Comment approveComment(@PathVariable int id){
         Comment comment = commentService.getComment(id);
+        if (comment == null){
+            throw new MyNoSuchElementException("There is no comment with ID = " + id + " in Database");
+        }
         comment.setApproved(true);
         commentService.saveComment(comment);
         return comment;

@@ -35,9 +35,7 @@ public class CommentDAOImpl implements CommentDAO {
     @Override
     public Comment getComment(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Comment> query = session.createQuery("from Comment where id=:id", Comment.class);
-        query.setParameter("id", id);
-        Comment comment = query.getSingleResult();
+        Comment comment = session.get(Comment.class, id);
         return comment;
     }
 
