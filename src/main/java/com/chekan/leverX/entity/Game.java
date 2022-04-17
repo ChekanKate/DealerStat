@@ -1,6 +1,7 @@
 package com.chekan.leverX.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "game")
@@ -12,6 +13,7 @@ public class Game {
     private int id;
 
     @Column(name = "name", nullable = false, unique = true)
+    @Size(min = 2, max = 50, message = "First name length must be between 2 and 50 characters")
     private String name;
 
     public Game() {

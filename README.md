@@ -25,13 +25,13 @@ Rating of Game Object
 
 ### Game
 Show game list
-> GET http://localhost:8080/games
+> GET http://localhost:8080/DealerStat/games/list
 
 Add new game
-> POST http://localhost:8080/games
+> POST http://localhost:8080/DealerStat/games/add
 
 Update the game
-> PUT http://localhost:8080/games/{id}
+> POST http://localhost:8080/games/update/{id}
 
 ### Game Object
 Show all approved Game Objects
