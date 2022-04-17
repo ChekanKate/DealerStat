@@ -36,7 +36,7 @@ public class Config {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/leverx_db?useSSL=false&serverTimezone=UTC");
+            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/dealerStat?useSSL=false&serverTimezone=UTC");
             dataSource.setUser("root");
             dataSource.setPassword("kate2001");
         } catch (PropertyVetoException e) {
