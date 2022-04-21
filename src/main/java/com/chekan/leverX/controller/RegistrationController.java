@@ -9,7 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
@@ -28,27 +29,24 @@ public class RegistrationController {
 
     @RequestMapping("/")
     public String mainView() {
-        return "main";
+        return "home";
     }
 
-    @RequestMapping("/registration")
-    public String registerUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "registration";
+    @GetMapping("/user/signUp")
+    public String showSignUp(User user) {
+        return "signUp";
     }
 
-    @RequestMapping("/saveUser")
-    public String saveUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        } else {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            String code = emailService.sendMail(user.getEmail());
-            user.setActivationCode(code);
-            userService.saveUser(user);
-            return "redirect:/";
+    @PostMapping("/user/add")
+    public String addNewUser(@Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "signUp";
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        String code = emailService.sendMail(user.getEmail());
+        user.setActivationCode(code);
+        userService.saveUser(user);
+        return "redirect:/";
     }
 
 }

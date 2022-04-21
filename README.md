@@ -56,7 +56,7 @@ Approve Game Object
 > PUT http://localhost:8080/object/approve/{id}
 
 ### Comment
-Show all aproved comments for Game Object's id
+Show all approved comments for Game Object's id
 > GET http://localhost:8080/users/{id}/comments
 
 Show all comments for Game Object's id (for admins)
