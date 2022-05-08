@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS game_object (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100),
     text TEXT,
+    price DECIMAL,
     is_approved TINYINT(1),
     created_at DATETIME,
     updated_at DATETIME,
@@ -80,11 +81,8 @@ INSERT INTO user_role (user_id, role_id) VALUES
     (301, 202),
     (302, 201);
 
-INSERT INTO game_object (id, title, text, is_approved, created_at, updated_at, game_id, user_id) VALUES
-    (401, 'GTA', 'Experience Rockstar Games critically acclaimed open world game, Grand Theft Auto V.', 0, '2022-04-17 15:30:00', '2022-04-17 18:30:00', 103, 302);
+INSERT INTO game_object (id, title, text, price, is_approved, created_at, updated_at, game_id, user_id) VALUES
+    (401, 'GTA', 'Experience Rockstar Games critically acclaimed open world game, Grand Theft Auto V.', 350, 0, '2022-04-17 15:30:00', '2022-04-17 18:30:00', 103, 302);
 
 INSERT INTO comment (id, message, rate, created_at, approved, post_id) VALUES
     (501, 'Good game', 8, '2022-04-17 22:36:00', 0, 401);
-
-
-

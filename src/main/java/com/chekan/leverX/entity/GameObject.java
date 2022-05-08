@@ -1,6 +1,8 @@
 package com.chekan.leverX.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -13,10 +15,16 @@ public class GameObject {
     private int id;
 
     @Column(name = "title")
+    @Size(min = 2, max = 50, message = "Title length must be between 2 and 50 characters")
     private String title;
 
     @Column(name = "text")
+    @Size(min = 2, message = "Text length must be more than 2 characters")
     private String text;
+
+    @Column(name = "price")
+    @Min(value = 1, message = "Price must be greater than zero")
+    private double price;
 
     @Column(name = "is_approved")
     private boolean isApproved;
@@ -28,16 +36,19 @@ public class GameObject {
     private Date updatedAt;
 
     @Column(name = "game_id")
+    @Min(value = 1, message = "Game id must be greater than zero")
     private int game_id;
 
     @Column(name = "user_id")
+    @Min(value = 1, message = "User id must be greater than zero")
     private int user_id;
 
     public GameObject() {}
 
-    public GameObject(String title, String text, int game, int user) {
+    public GameObject(String title, String text, double price, int game, int user) {
         this.title = title;
         this.text = text;
+        this.price = price;
         this.game_id = game;
         this.user_id = user;
         this.createdAt = new Date(System.currentTimeMillis());
@@ -107,12 +118,21 @@ public class GameObject {
         this.user_id = user_id;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "GameObject{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
+                ", price=" + price +
                 ", isApproved=" + isApproved +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
