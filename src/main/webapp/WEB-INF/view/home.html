@@ -6,13 +6,18 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="./css/Home.css" media="screen">
+    <script defer src="./js/app.js"></script>
     <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
 </head>
 
 <body>
-<div class="container my-2">
+    <!-- <div class="container my-2">
     <div class="card">
         <div class="card-body">
             <div th:switch="${user}" class="container my-5">
@@ -29,7 +34,69 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+    <!-- nav button -->
+    <span class="nav-btn" id="nav-btn">
+        <i class="fas fa-bars"></i>
+    </span>
+    <!-- navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-header">
+            <span class="nav-close" id="nav-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <ul class="nav-items">
+            <li><a href="login" class="nav-link">sign up</a></li>
+            <li><a href="user/signUp" class="nav-link">sign in</a></li>
+            <li><a class="nav-link">forgot password</a></li>
+        </ul>
+    </nav>
+    <section class="u-align-center u-clearfix u-grey-5 u-section-1" id="sec-d7ca">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <h5 class="u-text u-text-1">the title</h5>
+            <h1 class="u-text u-text-2">Some Name</h1>
+            <p class="u-text u-text-3">Leverage agile frameworks to provide a robust synopsis for high level overviews.
+                Iterative approaches to corporate strategy foster collaborative thinking to further the overall value
+                proposition. Organically grow the holistic world view of
+                disruptive innovation.</p>
+        </div>
+    </section>
+    <section class="u-clearfix u-grey-5 u-section-2" id="sec-c7c1">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-1">
+                <div class="u-layout" style="">
+                    <div class="u-layout-row" style="">
+                        <div class="u-align-center u-black u-container-style u-layout-cell u-left-cell u-size-30 u-size-xs-60 u-layout-cell-1"
+                            src="">
+                            <div class="u-container-layout u-container-layout-1">
+                                <h2 class="u-text u-text-default u-text-white u-text-1">Games</h2>
+                                <img class="u-image u-image-default u-image-1" src="images/whiteControllerImg.png"
+                                    alt="" data-image-width="643" data-image-height="473">
+                                <a href="#" class="u-btn u-button-style u-white u-btn-1">learn more</a>
+                            </div>
+                        </div>
+                        <div
+                            class="u-align-center u-container-style u-layout-cell u-right-cell u-shape-rectangle u-size-30 u-size-xs-60 u-white u-layout-cell-2">
+                            <div class="u-container-layout u-container-layout-2">
+                                <h2 class="u-text u-text-default u-text-2">Posts</h2>
+                                <img class="u-expanded-width u-image u-image-default u-preserve-proportions u-image-2"
+                                    src="images/commenImg.png" alt="" data-image-width="560" data-image-height="560">
+                                <a href="#" class="u-black u-btn u-button-style u-btn-2 hover">learn more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="u-align-center u-black u-clearfix u-footer u-footer" id="sec-8bda">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <p class="u-small-text u-text u-text-variant u-text-1">Sample text</p>
+        </div>
+    </footer>
 </body>
 
 </html>
