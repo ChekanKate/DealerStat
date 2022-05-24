@@ -46,8 +46,8 @@ public class RatingController {
         for(Integer integer : rates) {
             sum += integer;
         }
-        String average = "Average rating of this game object : " + sum/rates.size() + "</h2><br><h2>";
-        String number = "Number of comments : " + rates.size();
+        String average = "Average rating of this game object : " + sum/rates.size() + " ";
+        String number = " Number of comments : " + rates.size();
         String result = average + number;
         model.addAttribute("result", result);
         return "ratingGameObject";

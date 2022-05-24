@@ -26,3 +26,7 @@ function playSound(url) {
     };
     document.body.appendChild(audio);
 }
+
+var mytext="Текст, який потрібно озвучити";
+govorun = new Audio('http://translate.google.com/translate_tts?q=' + mytext + '&tl=ru');
+govorun.autoplay = true;

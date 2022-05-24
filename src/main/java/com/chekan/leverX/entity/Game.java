@@ -23,6 +23,11 @@ public class Game {
         this.name = name;
     }
 
+    public Game(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

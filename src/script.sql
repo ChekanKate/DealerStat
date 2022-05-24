@@ -67,7 +67,8 @@ CREATE TABLE IF NOT EXISTS comment (
 INSERT INTO game (id, name) VALUES
     (101, 'Minecraft'),
     (102, 'Fifa'),
-    (103, 'GTA');
+    (103, 'GTA'),
+    (104, 'Among us');
 
 INSERT INTO role (id, name) VALUES
     (201, 'TRADER'),
@@ -86,3 +87,13 @@ INSERT INTO game_object (id, title, text, price, is_approved, created_at, update
 
 INSERT INTO comment (id, message, rate, created_at, approved, post_id) VALUES
     (501, 'Good game', 8, '2022-04-17 22:36:00', 0, 401);
+
+
+INSERT INTO game_object (id, title, text, price, is_approved, created_at, updated_at, game_id, user_id) VALUES
+    (402, 'Fifa 22', 'Video game simulator of football, published by Electronic Arts. This is the 29th part of the FIFA series, which was released worldwide on October 1, 2021.', 220, 0, '2022-03-23 11:54:00', '2022-03-23 11:54:00', 102, 302),
+    (403, 'Fifa 20', 'A football imitation of a video game published by Electronic Arts as part of the FIFA series. This is the 27th category in the FIFA series and was released on September 27, 2019.', 175, 0, '2021-04-11 10:03:00', '2021-04-11 10:03:00', 102, 301),
+    (404, 'Minecraft', 'Prepare for an adventure of limitless possibilities as you build, mine, battle mobs, and explore the ever-changing Minecraft landscape.', 400, 0, '2022-03-28 19:44:00', '2022-03-28 19:44:00', 101, 302),
+    (405, 'Among Us', 'The game is performed in a space environment. The goal of civilians is to find impostors and neutralize them, and the goal of imposters is to kill all civilians.', 310, 0, '2022-01-07 13:51:00', '2022-01-07 13:51:00', 103, 301);
+
+INSERT INTO game (id, name) VALUES
+                                (104, 'Among us');

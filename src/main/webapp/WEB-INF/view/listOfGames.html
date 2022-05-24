@@ -17,7 +17,7 @@
         <div class="card-body">
             <div th:switch="${games}" class="container my-5">
                 <p class="my-5">
-                    <a href="signUp" class="btn btn-primary"><i
+                    <a href="signUp" class="btn btn-dark"><i
                             class="fas fa-user-plus ml-2"> Add Game</i></a>
                 </p>
             <div th:switch="${games}" class="container my-5">
@@ -37,7 +37,7 @@
                             <tr th:each="game : ${games}">
                                 <td th:text="${game.id}"></td>
                                 <td th:text="${game.name}"></td>
-                                <td><a th:href="@{/games/edit/{id}(id=${game.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                <td><a th:href="@{/games/edit/{id}(id=${game.id})}" class="btn btn-secondary"><i class="fas fa-user-edit ml-2"></i></a></td>
                             </tr>
                             </tbody>
                         </table>

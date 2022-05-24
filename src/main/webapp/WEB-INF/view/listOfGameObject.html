@@ -17,7 +17,7 @@
         <div class="card-body">
             <div th:switch="${gameObjects}" class="container my-5">
                 <p class="my-5">
-                    <a href="viewGO" class="btn btn-primary"><i
+                    <a href="viewGO" class="btn btn-dark"><i
                             class="fas fa-user-plus ml-2"> Add Game Object</i></a>
                 </p>
                 <div th:switch="${gameObjects}" class="container my-5">
@@ -45,9 +45,9 @@
                                     <td th:text="${gameObject.price}"></td>
                                     <td th:text="${gameObject.createdAt}"></td>
                                     <td th:text="${gameObject.updatedAt}"></td>
-                                    <td><a th:href="@{/gameObjects/edit/{id}(id=${gameObject.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                    <td><a class="btn btn-primary" role="button">Comments</a></td>
-                                    <td><a class="btn btn-primary" role="button">Buy</a></td>
+                                    <td><a th:href="@{/gameObjects/edit/{id}(id=${gameObject.id})}" class="btn btn-secondary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                    <td><a class="btn btn-secondary" role="button">Comments</a></td>
+                                    <td><a class="btn btn-success" role="button">Buy</a></td>
                                 </tr>
                                 </tbody>
                             </table>

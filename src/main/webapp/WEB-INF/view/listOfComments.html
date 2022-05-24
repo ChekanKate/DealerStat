@@ -16,6 +16,10 @@
     <div class="card">
         <div class="card-body">
             <div th:switch="${comments}" class="container my-5">
+                <p class="my-5">
+                    <a href="signUp" class="btn btn-dark"><i
+                            class="fas fa-user-plus ml-2"> Add Comment</i></a>
+                </p>
                 <div th:switch="${comments}" class="container my-5">
                     <div class="col-md-10">
                         <h2 th:case="null">No Comments yet!</h2>
